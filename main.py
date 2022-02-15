@@ -2,9 +2,11 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 # Objetivo: Em uma pesquisa rápida, quantas vezes se mencionou o tópico citado nos últimos x dias?
-topic = "monark nazismo"
-days = 5
-pages = 4
+topic = input("Em qual tópico você está interessado?")
+days = int(input("Quantos dias atrás?"))
+pages = int(input("Deseja que eu pesquise até qual página?"))
+
+print("Começando o webscrapping ...")
 
 # Ir ao google.com
 browser = webdriver.Chrome()
