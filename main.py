@@ -9,8 +9,6 @@ topic = input("Em qual tópico você está interessado?")
 days = int(input("Quantos dias atrás?"))
 pages = int(input("Deseja que eu pesquise até qual página?"))
 
-services.title_has_name(topic)
-
 # Ir ao google.com
 browser = webdriver.Chrome()
 browser.get("http://www.google.com/")
