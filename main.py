@@ -1,12 +1,15 @@
+import sys
+sys.path.append("/topic-trend/modules/")
+
+from modules import services
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-# Objetivo: Em uma pesquisa rápida, quantas vezes se mencionou o tópico citado nos últimos x dias?
 topic = input("Em qual tópico você está interessado?")
 days = int(input("Quantos dias atrás?"))
 pages = int(input("Deseja que eu pesquise até qual página?"))
 
-print("Começando o webscrapping ...")
+services.title_has_name(topic)
 
 # Ir ao google.com
 browser = webdriver.Chrome()
