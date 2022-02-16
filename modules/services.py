@@ -1,3 +1,6 @@
+import time
+from datetime import datetime
+
 # Verifica se as palavras do tópico estão inclusas no título da notícia
 def title_has_names(topic, title):
 
@@ -20,5 +23,10 @@ def title_has_names(topic, title):
   return False if max(occurrences) == 0 else True
 
 # Extrair a data das publicações
-def extract_date_from(datetime):
-  pass
+def extract_date_from(period):
+
+  # Separe a data
+  array = period.split("T")
+  str_date = array[0]
+
+  return str_date
