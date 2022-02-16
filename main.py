@@ -54,9 +54,7 @@ for j in range(n):
     data.append(news)
 
 # Fechar o navegador
-# browser.close()
+browser.close()
 
 # Tratar os dados
 handling.group_by_month(data)
-
-print(len(data))
