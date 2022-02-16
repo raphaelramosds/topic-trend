@@ -7,3 +7,5 @@ A ideia principal é *Em uma pesquisa rápida, quantas vezes se mencionou o tóp
 ### Regras de negócio
 
 [ x ] Caso nenhuma palavra chave do tópico esteja no título da notícia, ela não será considerada
+
+[ x ] O tempo de publicação da notícia deve estar em `%y-%m-%d`
