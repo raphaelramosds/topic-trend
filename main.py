@@ -1,3 +1,4 @@
+import time
 import sys
 sys.path.append("/topic-trend/modules/")
 
@@ -7,7 +8,6 @@ from selenium.webdriver.common.keys import Keys
 
 # Iteração com o usuário
 topic = input("Em qual tópico você está interessado?")
-days = int(input("Quantos dias atrás?"))
 pages = int(input("Deseja que eu pesquise até qual página?"))
 
 # Ir ao Google News
@@ -23,31 +23,30 @@ search_field.send_keys(Keys.ENTER)
 data = []
 
 for i in range(pages):
+  # Esperar a página carregar
+  time.sleep(2)
 
-  # Pegar as informações
-  card_periods = browser.find_elements_by_css_selector("g-card > div > div > a > div > div.iRPxbe > div.ZE0LJd > p > span")
-  card_titles = browser.find_elements_by_css_selector("g-card > div > div > a > div > div.iRPxbe > div.mCBkyc.y355M.JQe2Ld.nDgy9d")
-  n = len(card_titles)
-
-  # Percorrer os titulos individualmente
-  for j in range(n):
-    title = card_titles[i].text
-    period = card_periods[i].text
-    news = {}
-
-    # Aplique as regras definidas
-    if services.title_has_names(topic, title) and services.period_has_days(period):
-      news["title"] = title
-      news["period"] = period
-      data.append(news)
-
-  # Role até o final da página
+  # Role até o final da página x vezes
   browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-  # Clique no próximo item
-  browser.find_element_by_css_selector("#pnnext > span:nth-child(2)").click()
+# Pegar as informações
+card_periods = browser.find_elements_by_css_selector("#yDmH0d > c-wiz > div > div.FVeGwb.CVnAc.Haq2Hf.bWfURe > div.ajwQHc.BL5WZb.RELBvb > div > main > c-wiz > div.lBwEZb.BL5WZb.xP6mwf > div > div > article > div > div > time")
+card_titles = browser.find_elements_by_css_selector("#yDmH0d > c-wiz > div > div.FVeGwb.CVnAc.Haq2Hf.bWfURe > div.ajwQHc.BL5WZb.RELBvb > div > main > c-wiz > div.lBwEZb.BL5WZb.xP6mwf > div > div > article > h3")
+n = min(len(card_periods), len(card_titles))
+
+# Percorrer os titulos individualmente
+for j in range(n):
+
+  # Definição dos titulos e tempos da publicação
+  title = card_titles[j].text
+  period = card_periods[j].get_attribute("datetime")
+  news = {}
+
+  # Aplique as regras definidas
+  if services.title_has_names(topic, title):
+    news["title"] = title
+    news["period"] = period
+    data.append(news)
 
 # Fechar o navegador
 browser.close()
-
-print(data)

@@ -19,6 +19,6 @@ def title_has_names(topic, title):
   # Caso o maior valor seja zero, não houve nenhuma ocorrência
   return False if max(occurrences) == 0 else True
 
-# Apenas permite notícias que possuam "(há) dias (atrás)"
-def period_has_days(period):
-  return True if period.find("dias") > 0 or period.find("dia") > 0 else False
+# Extrair a data das publicações
+def extract_date_from(datetime):
+  pass
