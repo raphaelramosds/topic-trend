@@ -15,7 +15,7 @@ from selenium.webdriver.common.keys import Keys
 topic = input("Em qual tópico você está interessado?")
 pages = int(input("Deseja que eu pesquise até qual página?"))
 
-# Ir ao Google News
+# Ir ao Google Notícias
 browser = webdriver.Chrome()
 browser.get("https://news.google.com/topstories?hl=pt-BR&gl=BR&ceid=BR:pt-419")
 
