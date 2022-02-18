@@ -28,11 +28,11 @@ search_field.send_keys(Keys.ENTER)
 data = []
 
 for i in range(pages):
-  
+
   # Esperar a página carregar
   time.sleep(2)
 
-  # Role até o final da página x vezes
+  # Role até o final da página n vezes
   browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
 # Pegar as informações
