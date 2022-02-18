@@ -28,6 +28,7 @@ search_field.send_keys(Keys.ENTER)
 data = []
 
 for i in range(pages):
+  
   # Esperar a página carregar
   time.sleep(2)
 
