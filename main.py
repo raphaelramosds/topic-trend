@@ -12,8 +12,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 # Iteração com o usuário
-topic = input("Em qual tópico você está interessado?")
-pages = int(input("Deseja que eu pesquise até qual página?"))
+topic = input("Em qual tópico você está interessado? ")
+pages = int(input("Deseja que eu pesquise até qual página? "))
 
 # Ir ao Google Notícias
 browser = webdriver.Chrome()
@@ -36,8 +36,9 @@ for i in range(pages):
   browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
 # Pegar as informações
-card_periods = browser.find_elements_by_css_selector("#yDmH0d > c-wiz > div > div.FVeGwb.CVnAc.Haq2Hf.bWfURe > div.ajwQHc.BL5WZb.RELBvb > div > main > c-wiz > div.lBwEZb.BL5WZb.xP6mwf > div > div > article > div > div > time")
-card_titles = browser.find_elements_by_css_selector("#yDmH0d > c-wiz > div > div.FVeGwb.CVnAc.Haq2Hf.bWfURe > div.ajwQHc.BL5WZb.RELBvb > div > main > c-wiz > div.lBwEZb.BL5WZb.xP6mwf > div > div > article > h3")
+prefix = "#yDmH0d > c-wiz > div > div.FVeGwb.CVnAc.Haq2Hf.bWfURe > div.ajwQHc.BL5WZb.RELBvb > div > main > c-wiz > div.lBwEZb.BL5WZb.xP6mwf > div > div > article"
+card_periods = browser.find_elements_by_css_selector(f"{prefix} > div > div > time")
+card_titles = browser.find_elements_by_css_selector(f"{prefix} > h3")
 n = min(len(card_periods), len(card_titles))
 
 # Percorrer os titulos individualmente
