@@ -4,7 +4,6 @@ import sys
 sys.path.append("/topic-trend/modules/")
 
 # Módulos adicionais
-from modules import services
 from modules import handling
 
 # Webscraping
@@ -50,13 +49,10 @@ for j in range(n):
   news = {}
 
   # Aplique as regras definidas
-  if services.title_has_names(topic, title):
+  if handling.title_has_names(topic, title):
     news["title"] = title
-    news["period"] = services.extract_date_from(period)
+    news["period"] = handling.extract_date_from(period)
     data.append(news)
 
 # Fechar o navegador
 browser.close()
-
-# Tratar os dados
-handling.group_by_month(data)
