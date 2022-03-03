@@ -1,6 +1,6 @@
 # Tendência de um tópico
 
-A ideia principal é *Em uma pesquisa rápida, quantas vezes se mencionou o tópico citado nos últimos x dias?*
+A ideia principal é que possamos avaliar a relevância de um determinado tópico a partir das datas de publicações de notícias relacionados a ele.
 
 ![](./carbon.png)
 
