@@ -6,6 +6,6 @@ A ideia principal é *Em uma pesquisa rápida, quantas vezes se mencionou o tóp
 
 ### Regras de negócio
 
-[ x ] Caso nenhuma palavra chave do tópico esteja no título da notícia, ela não será considerada
+`at least one keywork` caso nenhuma palavra chave do tópico esteja no título da notícia, ela não será considerada
 
-[ x ] O tempo de publicação da notícia deve estar em `%y-%m-%d`
+`34NT2020/04/12 should be 2020-04-12` O tempo de publicação da notícia deve estar no formato %y-%m-%d

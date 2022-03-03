@@ -5,6 +5,7 @@ sys.path.append("/topic-trend/modules/")
 
 # Módulos adicionais
 from modules import handling
+import pandas as pd
 
 # Webscraping
 from selenium import webdriver
@@ -24,7 +25,10 @@ search_field.send_keys(topic)
 search_field.send_keys(Keys.ENTER)
 
 # Recuperar titulos e tempo de cada notícia
-data = []
+data = {}
+
+data["period"] = []
+data["title"] = []
 
 for i in range(pages):
 
@@ -46,13 +50,15 @@ for j in range(n):
   # Definição dos titulos e tempos da publicação
   title = card_titles[j].text
   period = card_periods[j].get_attribute("datetime")
-  news = {}
 
   # Aplique as regras definidas
   if handling.title_has_names(topic, title):
-    news["title"] = title
-    news["period"] = handling.extract_date_from(period)
-    data.append(news)
+    data["title"].append(title)
+    data["period"].append(handling.extract_date_from(period))
 
 # Fechar o navegador
 browser.close()
+
+# Exportar dados
+table = pd.DataFrame(data)
+table.to_csv("news.csv", index=False)
