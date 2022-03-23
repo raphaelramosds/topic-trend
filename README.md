@@ -4,7 +4,7 @@ A ideia principal é que possamos avaliar a relevância de um determinado tópic
 
 ## Webscraping
 
-![](./carbon.png)
+![](./assets/carbon.png)
 
 Seguiu-se as seguintes regras de negócio
 
