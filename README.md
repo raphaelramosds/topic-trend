@@ -1,11 +1,11 @@
 # Tendência de um tópico
 
-A ideia principal é *Em uma pesquisa rápida, quantas vezes se mencionou o tópico citado nos últimos x dias?*
+A ideia principal é que possamos avaliar a relevância de um determinado tópico a partir das datas de publicações de notícias relacionados a ele.
 
 ![](./carbon.png)
 
 ### Regras de negócio
 
-`at least one keywork` caso nenhuma palavra chave do tópico esteja no título da notícia, ela não será considerada
+`at least one keyword` caso nenhuma palavra chave do tópico esteja no título da notícia, ela não será considerada
 
-`34NT2020/04/12 should be 2020-04-12` O tempo de publicação da notícia deve estar no formato %y-%m-%d
+`34NT2020/04/12 should be 2020-04-12` o tempo de publicação da notícia deve estar no formato %y-%m-%d
