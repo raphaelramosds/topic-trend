@@ -13,7 +13,6 @@ from selenium.webdriver.common.keys import Keys
 
 # Iteração com o usuário
 topic = input("Em qual tópico você está interessado? ")
-pages = int(input("Deseja que eu pesquise até qual página? "))
 
 # Ir ao Google Notícias
 browser = webdriver.Chrome()
@@ -30,13 +29,11 @@ data = {}
 data["period"] = []
 data["title"] = []
 
-for i in range(pages):
+# Esperar a página carregar
+time.sleep(2)
 
-  # Esperar a página carregar
-  time.sleep(2)
-
-  # Role até o final da página n vezes
-  browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+# Role até o final da página n vezes
+browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
 # Pegar as informações
 prefix = "#yDmH0d > c-wiz > div > div.FVeGwb.CVnAc.Haq2Hf.bWfURe > div.ajwQHc.BL5WZb.RELBvb > div > main > c-wiz > div.lBwEZb.BL5WZb.xP6mwf > div > div > article"
@@ -61,4 +58,4 @@ browser.close()
 
 # Exportar dados
 table = pd.DataFrame(data)
-table.to_csv("news.csv", index=False)
+table.to_csv("./assets/news.csv", index=False)
